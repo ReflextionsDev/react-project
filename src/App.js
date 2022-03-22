@@ -40,18 +40,37 @@ export class App extends Component {
       currentBug: {
         id: 4,
         title: "New Bug",
-        desc: "",
+        desc: "description",
         severity: "B",
-        status: "",
-        time_created: "",
-        time_updated: "",
+        status: "open",
+        time_created: "before",
+        time_updated: "now",
       }
     }
   }
 
-  addBug = (e) => {
-    console.log("yee")
-    console.log(e)
+  updateCurrentBug = (e) => {
+    const newData = { ...this.state }
+    newData.currentBug[e.target.name] = e.target.value
+    this.setState({ newData })
+  }
+
+  submitNewBug = (e) => {
+    console.log('submit new bug')
+
+    const newData = { ...this.state }
+    const newBug = {
+      id: this.state.currentBug.id,
+      title: this.state.currentBug.title,
+      desc: this.state.currentBug.desc,
+      severity: this.state.currentBug.severity,
+      status: this.state.currentBug.status,
+      time_created: this.state.currentBug.time_created,
+      time_updated: this.state.currentBug.time_updated,
+    }
+   
+    newData.bugs.push(newBug)
+    this.setState({ newData })
   }
 
   render() {
@@ -79,20 +98,19 @@ export class App extends Component {
           </div>
 
           <div className='Editor'>
-          <BugEditor
-                  key={`bug-${this.state.currentBug.id}`}
-                  id={this.state.currentBug.id}
-                  title={this.state.currentBug.title}
-                  desc={this.state.currentBug.desc}
-                  severity={this.state.currentBug.severity}
-                  status={this.state.currentBug.status}
-                  time_created={this.state.currentBug.time_created}
-                  time_updated={this.state.currentBug.time_updated}
-
-                  addBug={this.addBug}
-                />
+            <BugEditor
+              key={`bug-${this.state.currentBug.id}`}
+              id={this.state.currentBug.id}
+              title={this.state.currentBug.title}
+              desc={this.state.currentBug.desc}
+              severity={this.state.currentBug.severity}
+              status={this.state.currentBug.status}
+              time_created={this.state.currentBug.time_created}
+              time_updated={this.state.currentBug.time_updated}
+              update={this.updateCurrentBug}
+              submit={this.submitNewBug}
+            />
           </div>
-
         </main>
       </div>
 

@@ -13,12 +13,12 @@ export class BugEditor extends Component {
         super(props)
         this.state = {
             // id: this.props.id,
-            title: this.props.title,
-            desc: this.props.desc,
-            severity: this.props.severity,
-            status: this.props.status,
-            time_created: this.props.time_created,
-            time_updated: this.props.time_updated,
+            // title: this.props.title,
+            // desc: this.props.desc,
+            // severity: this.props.severity,
+            // status: this.props.status,
+            // time_created: this.props.time_created,
+            // time_updated: this.props.time_updated,
             // selectedOption: {
             //     label: this.props.severity,
             //     value: this.props.severity
@@ -26,17 +26,13 @@ export class BugEditor extends Component {
         }
     }
 
-    handleChange = (selectedOption) => {
-        this.setState({ selectedOption }, () =>
-            console.log(`Option selected:`, this.state.selectedOption)
-        );
-    };
+    // handleChange = (selectedOption) => {
+    //     this.setState({ selectedOption }, () =>
+    //         console.log(`Option selected:`, this.state.selectedOption)
+    //     );
+    // };
 
-    updateText = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+
 
     render() {
         return (
@@ -45,13 +41,13 @@ export class BugEditor extends Component {
                 <hr />
 
                 <div>ID: {this.props.id}</div>
-                
+
                 <div>
                     <label>Title: </label>
                     <input
                         name="title"
-                        value={this.state.title}
-                        onChange={this.updateText}
+                        value={this.props.title}
+                        onChange={this.props.update}
                     ></input>
                 </div>
 
@@ -59,8 +55,8 @@ export class BugEditor extends Component {
                     <label>Description: </label>
                     <input
                         name="desc"
-                        value={this.state.desc}
-                        onChange={this.updateText}
+                        value={this.props.desc}
+                        onChange={this.props.update}
                     ></input>
                 </div>
 
@@ -68,9 +64,8 @@ export class BugEditor extends Component {
                     <label>Severity: </label>
                     <input
                         name="severity"
-                        value={this.state.severity}
-                        // onChange={this.updateText}
-                        
+                        value={this.props.severity}
+                        onChange={this.props.update}
                     ></input>
 
                     {/* <Select
@@ -83,13 +78,22 @@ export class BugEditor extends Component {
                 </div>
 
 
+                <div>
+                    <label>Status: </label>
+                    <input
+                        name="status"
+                        value={this.props.status}
+                        onChange={this.props.update}
+                    ></input>
+                </div>
 
+                <div>Time Created: {this.props.time_created}</div>
+                <div>Time Updated: {this.props.time_updated}</div>
 
-                {/* <div>Description: {this.props.desc}</div>
-                <div>Severity: {props.severity}</div>
-                <div>Status: {props.status}</div>
-                <div>Time Created: {props.time_created}</div>
-                <div>Time Updated: {props.time_updated}</div> */}
+                <button
+                    name="submit"
+                    onClick={this.props.submit}
+                    >Submit</button>
             </div>
         )
     }
