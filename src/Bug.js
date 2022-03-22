@@ -1,14 +1,16 @@
+// Make drop downs for serverity and status
+// Make description a text area
+
 function Bug(props) {
     return (
-        <div className='Bug'>
-            <div>Bug</div>
-            <div>ID: {props.id}</div>
-            <div>Title: {props.title}</div>
-            <div>Description: {props.desc}</div>
-            <div>Severity: {props.severity}</div>
-            <div>Status: {props.status}</div>
-            <div>Time Created: {props.time_created}</div>
-            <div>Time Updated: {props.time_updated}</div>
+        <div className='Item'>
+            <div className="ItemID">#{props.id}</div>
+            <div>{props.title}</div>
+            {/* <div>Description: {props.desc}</div> */}
+            <div className="ItemSeverity">{props.severity}</div>
+            <div>{props.status}</div>
+            <div>{props.time_updated}</div>
+            <div>{props.time_created}</div>
         </div>
     )
 }

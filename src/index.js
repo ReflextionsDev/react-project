@@ -20,8 +20,8 @@ import reportWebVitals from './reportWebVitals';
 // - Student demonstrates ability to create reusable react components. 
 // - Student demonstrates ability to pass in props to a component, making it a controlled component.  
 // - Student demonstrates ability to render multiple copies of a component using the map method. 
-// - Student demonstrates ability to conditionally render elements and/or conditionally change element attributes from a state variable. 
-// - Student demonstrates ability to implement API calls, GET and POST methods. 
+// [-] Student demonstrates ability to conditionally render elements and/or conditionally change element attributes from a state variable. 
+// [-] Student demonstrates ability to implement API calls, GET and POST methods. 
 // - Student demonstrates ability to utilize basic css styling. 
 // - Student demonstrates proper use of the object/ destructuring/spread syntax. 
 

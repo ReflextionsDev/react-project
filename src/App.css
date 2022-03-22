@@ -1,41 +1,79 @@
-.App {
+/* App */
+
+.app {
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* Top Level */
 
-.App-link {
-  color: #61dafb;
-}
-
-header {
-  background-color: rgb(141, 162, 180);
+.nav {
+  background-color: rgb(141, 162, 180); 
 }
 
 main {
   display: flex;
 }
 
-.Items {
+.items {
   flex: 2;
   background-color: rgb(151, 221, 209);
 }
 
-.Editor {
+.editor {
   flex: 1;
   background-color: rgb(245, 221, 221);
 }
 
-.Bug {
+/* Items */
+
+.item {
   margin: 10px;
-  background-color: rgb(127, 255, 191);
+  display: flex;
+  /* justify-content: space-between; */
 }
+
+.item > div {
+  border: #282c34 1px solid;
+  flex: 1;
+}
+
+.item .item__id {
+  flex: 0.5;
+}
+
+/* .ItemHeader .ItemSeverity {
+  flex: 0.5;
+} */
+
+.Item {
+  background-color: rgb(127, 255, 191);
+  margin: 10px;
+  display: flex;
+}
+
+.Item > div {
+  border: #282c34 1px solid;
+  flex: 1;
+}
+
+/* ItemID
+ItemTitle
+ItemSeverity
+ItemCreated
+ItemStatus
+ItemUpdated */
+
+/* .Item .ItemID {
+  flex: 0.5;
+} */
+/* 
+.Item .ItemSeverity {
+  flex: 0.5;
+} */
+
+/* .ItemSeverity {
+  flex: 0.5;
+} */
+
+/* Item Fields */
+
