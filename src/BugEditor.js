@@ -3,10 +3,19 @@ import { getDate, printDate } from "./middleware/datetime"
 
 import Select from 'react-select';
 
-const options = [
+const severityOptions = [
     { value: 'A', label: 'A' },
     { value: 'B', label: 'B' },
     { value: 'C', label: 'C' },
+];
+
+const statusOptions = [
+    { value: 'open', label: 'open' },
+    { value: 'in progress', label: 'in progress' },
+    { value: 'blocked', label: 'blocked' },
+    { value: 'regression', label: 'regression' },
+    { value: 'closed', label: 'closed' },
+    { value: 'reopen', label: 'reopen' },
 ];
 
 export class BugEditor extends Component {
@@ -28,19 +37,17 @@ export class BugEditor extends Component {
         }
     }
 
-    handleChange = (selectedOption) => {
-        this.setState({ selectedOption }, () =>
-            console.log(`Option selected:`, this.state.selectedOption)
-        );
-    };
+    // handleChange = (selectedOption) => {
+    //     this.setState({ selectedOption }, () =>
+    //         console.log(`Option selected:`, this.state.selectedOption)
+    //     );
+    // };
 
     render() {
         return (
             <div className='Bug'>
-                <div>New Bug</div>
+                <div>New Bug (ID: #{this.props.id})</div>
                 <hr />
-
-                <div>ID: {this.props.id}</div>
 
                 <div>
                     <label>Title: </label>
@@ -62,29 +69,28 @@ export class BugEditor extends Component {
 
                 <div>
                     <label>Severity: </label>
-                    <input
-                        name="severity"
-                        value={this.props.severity}
-                        onChange={this.props.update}
-                    ></input>
-
                     <Select
-                        value={this.state.selectedOption}
-                        onChange={this.handleChange}
-                        options={options}
+                        name="severity"
+                        value={{
+                            label: this.props.severity,
+                            value: this.props.severity
+                        }}
+                        onChange={this.props.updateSeverity}
+                        options={severityOptions}
                     />
-                    
-
                 </div>
 
 
                 <div>
                     <label>Status: </label>
-                    <input
-                        name="status"
-                        value={this.props.status}
-                        onChange={this.props.update}
-                    ></input>
+                    <Select
+                        value={{
+                            label: this.props.status,
+                            value: this.props.status
+                        }}
+                        onChange={this.props.updateStatus}
+                        options={statusOptions}
+                    />
                 </div>
 
                 {/* <div>Time Created: {this.props.time_created}</div> */}
@@ -93,7 +99,7 @@ export class BugEditor extends Component {
                 <button
                     name="submit"
                     onClick={this.props.submit}
-                    >Submit</button>
+                >Submit</button>
             </div>
         )
     }

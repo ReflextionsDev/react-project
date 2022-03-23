@@ -2,6 +2,10 @@ import date from 'date-and-time';
 
 const timeURL = 'http://worldtimeapi.org/api/timezone/gmt'
 
+// const newdate = new Date()
+// const now = Date.now(newdate)
+// console.log(now)
+
 async function getDate() {
     const response = await fetch(timeURL)
     let data = await response.json()

@@ -55,16 +55,28 @@ export class App extends Component {
     }
   }
 
-  updateBug = (e) => {
+  //text 
+
+  updateCurrentBug = async (e) => {
     const newData = { ...this.state }
     newData.currentBug[e.target.name] = e.target.value
     // need to await??
-    newData.currentBug.time_updated = tempDate
+    newData.currentBug.time_updated = await getDate()
     this.setState(newData)
   }
 
-  updateBugSeverity = (e) => {
-    console.log(e)
+  // select 
+  updateCurrentBugSeverity = (e) => {
+    const newData = { ...this.state }
+    newData.currentBug.severity = e.value
+    this.setState(newData)
+
+  }
+
+  updateCurrentBugStatus = (e) => {
+    const newData = { ...this.state }
+    newData.currentBug.status = e.value
+    this.setState(newData)
   }
 
   submitNewBug = (e) => {
@@ -143,9 +155,10 @@ export class App extends Component {
               status={this.state.currentBug.status}
               time_created={this.state.currentBug.time_created}
               time_updated={this.state.currentBug.time_updated}
-              update={this.updateBug}
+              update={this.updateCurrentBug}
               submit={this.submitNewBug}
-              updateSeverity={this.updateBugSeverity}
+              updateSeverity={this.updateCurrentBugSeverity}
+              updateStatus={this.updateCurrentBugStatus}
             />
           </div>
         </main>
