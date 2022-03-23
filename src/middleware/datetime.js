@@ -1,5 +1,7 @@
 import date from 'date-and-time';
 
+const timeURL = 'http://worldtimeapi.org/api/timezone/gmt'
+
 async function getDate() {
     const response = await fetch(timeURL)
     let data = await response.json()
@@ -15,5 +17,5 @@ function printDate(dateObj) {
 
 export {
     getDate,
-    print,
+    printDate,
 }

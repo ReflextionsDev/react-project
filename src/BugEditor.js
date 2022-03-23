@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-// import Select from 'react-select';
+import { getDate, printDate } from "./middleware/datetime"
 
-// const options = [
-//     { value: 'A', label: 'A' },
-//     { value: 'B', label: 'B' },
-//     { value: 'C', label: 'C' },
-// ];
+import Select from 'react-select';
+
+const options = [
+    { value: 'A', label: 'A' },
+    { value: 'B', label: 'B' },
+    { value: 'C', label: 'C' },
+];
 
 export class BugEditor extends Component {
 
@@ -26,11 +28,11 @@ export class BugEditor extends Component {
         }
     }
 
-    // handleChange = (selectedOption) => {
-    //     this.setState({ selectedOption }, () =>
-    //         console.log(`Option selected:`, this.state.selectedOption)
-    //     );
-    // };
+    handleChange = (selectedOption) => {
+        this.setState({ selectedOption }, () =>
+            console.log(`Option selected:`, this.state.selectedOption)
+        );
+    };
 
     render() {
         return (
@@ -66,12 +68,12 @@ export class BugEditor extends Component {
                         onChange={this.props.update}
                     ></input>
 
-                    {/* <Select
+                    <Select
                         value={this.state.selectedOption}
                         onChange={this.handleChange}
                         options={options}
                     />
-                     */}
+                    
 
                 </div>
 
@@ -85,8 +87,8 @@ export class BugEditor extends Component {
                     ></input>
                 </div>
 
-                <div>Time Created: {this.props.time_created}</div>
-                <div>Time Updated: {this.props.time_updated}</div>
+                {/* <div>Time Created: {this.props.time_created}</div> */}
+                {/* <div>Time Updated: {this.props.time_updated}</div> */}
 
                 <button
                     name="submit"

@@ -1,7 +1,7 @@
 // Make drop downs for serverity and status
 // Make description a text area
 
-import { printDate } from "./App"
+import { getDate, printDate } from "./middleware/datetime"
 
 
 function Bug(props) {

@@ -2,32 +2,11 @@ import './App.css'
 import React, { Component } from 'react'
 import Bug from './Bug'
 import BugEditor from './BugEditor'
-import date from 'date-and-time';
+import { getDate, printDate } from './middleware/datetime'
 
 const tempDate = new Date('2022-03-23T16:12:14.771477+00:00')
-const timeURL = 'http://worldtimeapi.org/api/timezone/gmt'
-
-async function getDate() {
-  const response = await fetch(timeURL)
-  let data = await response.json()
-  let newDate = new Date(data.datetime)
-  console.log("Get Date:",newDate)
-  console.log("Print Date:", printDate(newDate))
-  return newDate;
-}
-
-function printDate(dateObj) {
-  return date.format(dateObj, 'MM/DD/YYYY HH:mm')
-}
 
 getDate()
-
-// console.log(getDate())
-
-// let datetime = getDate()
-// console.log(datetime)
-// console.log(printDate(datetime))
-
 console.log(printDate(tempDate))
 
 export class App extends Component {
@@ -70,16 +49,22 @@ export class App extends Component {
         desc: "description",
         severity: "B",
         status: "open",
-        time_created: "before",
-        time_updated: "now",
+        time_created: tempDate,
+        time_updated: tempDate,
       }
     }
   }
 
-  updateCurrentBug = (e) => {
+  updateBug = (e) => {
     const newData = { ...this.state }
     newData.currentBug[e.target.name] = e.target.value
+    // need to await??
+    newData.currentBug.time_updated = tempDate
     this.setState(newData)
+  }
+
+  updateBugSeverity = (e) => {
+    console.log(e)
   }
 
   submitNewBug = (e) => {
@@ -158,8 +143,9 @@ export class App extends Component {
               status={this.state.currentBug.status}
               time_created={this.state.currentBug.time_created}
               time_updated={this.state.currentBug.time_updated}
-              update={this.updateCurrentBug}
+              update={this.updateBug}
               submit={this.submitNewBug}
+              updateSeverity={this.updateBugSeverity}
             />
           </div>
         </main>
@@ -170,7 +156,3 @@ export class App extends Component {
 }
 
 export default App
-
-export {
-  printDate,
-}
