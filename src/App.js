@@ -2,6 +2,33 @@ import './App.css'
 import React, { Component } from 'react'
 import Bug from './Bug'
 import BugEditor from './BugEditor'
+import date from 'date-and-time';
+
+const tempDate = new Date('2022-03-23T16:12:14.771477+00:00')
+const timeURL = 'http://worldtimeapi.org/api/timezone/gmt'
+
+async function getDate() {
+  const response = await fetch(timeURL)
+  let data = await response.json()
+  let newDate = new Date(data.datetime)
+  console.log("Get Date:",newDate)
+  console.log("Print Date:", printDate(newDate))
+  return newDate;
+}
+
+function printDate(dateObj) {
+  return date.format(dateObj, 'MM/DD/YYYY HH:mm')
+}
+
+getDate()
+
+// console.log(getDate())
+
+// let datetime = getDate()
+// console.log(datetime)
+// console.log(printDate(datetime))
+
+console.log(printDate(tempDate))
 
 export class App extends Component {
 
@@ -15,8 +42,8 @@ export class App extends Component {
           desc: "It's busted",
           severity: "B",
           status: "Not Started",
-          time_created: "2:23 PM 3/20/2022",
-          time_updated: "5:30 PM 3/21/2022",
+          time_created: tempDate,
+          time_updated: tempDate,
         },
         {
           id: 2,
@@ -24,8 +51,8 @@ export class App extends Component {
           desc: "It's really busted",
           severity: "A",
           status: "Not Started",
-          time_created: "5:23 AM 1/20/2022",
-          time_updated: "2:30 PM 2/21/2022",
+          time_created: tempDate,
+          time_updated: tempDate,
         },
         {
           id: 3,
@@ -33,8 +60,8 @@ export class App extends Component {
           desc: "Still busted",
           severity: "C",
           status: "In Progress",
-          time_created: "1:21 PM 2/18/2022",
-          time_updated: "6:29 PM 8/21/2022",
+          time_created: tempDate,
+          time_updated: tempDate,
         }
       ],
       currentBug: {
@@ -85,6 +112,7 @@ export class App extends Component {
     this.setState(newData)
   }
 
+
   render() {
     return (
       <div className="app">
@@ -99,9 +127,9 @@ export class App extends Component {
               <div className='item__id'>ID</div>
               <div className='item__title'>Title</div>
               <div className='item__severity'>Severity</div>
-              <div className='item__created'>Created</div>
               <div className='item__status'>Status</div>
               <div className='item__updated'>Updated</div>
+              <div className='item__created'>Created</div>
             </div>
 
             {this.state.bugs.map(({ id, title, desc, severity, status, time_created, time_updated }, idx) => {
@@ -142,3 +170,7 @@ export class App extends Component {
 }
 
 export default App
+
+export {
+  printDate,
+}

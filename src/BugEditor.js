@@ -32,8 +32,6 @@ export class BugEditor extends Component {
     //     );
     // };
 
-
-
     render() {
         return (
             <div className='Bug'>

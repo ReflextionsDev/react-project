@@ -41,39 +41,15 @@ main {
   flex: 0.5;
 }
 
-/* .ItemHeader .ItemSeverity {
+.item .item__severity {
   flex: 0.5;
-} */
+}
 
-.Item {
+
+.item--header {
+  background-color: cadetblue;
+}
+
+.item--item {
   background-color: rgb(127, 255, 191);
-  margin: 10px;
-  display: flex;
 }
-
-.Item > div {
-  border: #282c34 1px solid;
-  flex: 1;
-}
-
-/* ItemID
-ItemTitle
-ItemSeverity
-ItemCreated
-ItemStatus
-ItemUpdated */
-
-/* .Item .ItemID {
-  flex: 0.5;
-} */
-/* 
-.Item .ItemSeverity {
-  flex: 0.5;
-} */
-
-/* .ItemSeverity {
-  flex: 0.5;
-} */
-
-/* Item Fields */
-
