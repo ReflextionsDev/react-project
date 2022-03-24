@@ -1,6 +1,3 @@
-// Make drop downs for serverity and status
-// Make description a text area
-
 import { printDate } from "./middleware/datetime"
 
 

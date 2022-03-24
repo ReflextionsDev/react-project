@@ -4,6 +4,21 @@ import Bug from './Bug'
 import BugEditor from './BugEditor'
 import { getDate, printDate } from './middleware/datetime'
 
+const severityOptions = [
+  { value: 'A', label: 'A' },
+  { value: 'B', label: 'B' },
+  { value: 'C', label: 'C' },
+];
+
+const statusOptions = [
+  { value: 'open', label: 'open' },
+  { value: 'in progress', label: 'in progress' },
+  { value: 'blocked', label: 'blocked' },
+  { value: 'regression', label: 'regression' },
+  { value: 'closed', label: 'closed' },
+  { value: 'reopen', label: 'reopen' },
+];
+
 const tempDate = new Date('2022-03-23T16:12:14.771477+00:00')
 
 getDate()
@@ -39,6 +54,24 @@ export class App extends Component {
           desc: "Still busted",
           severity: "C",
           status: "In Progress",
+          time_created: tempDate,
+          time_updated: tempDate,
+        },
+        {
+          id: 4,
+          title: "Stuff",
+          desc: "Still busted",
+          severity: "C",
+          status: "In Progress",
+          time_created: tempDate,
+          time_updated: tempDate,
+        },
+        {
+          id: 5,
+          title: "Another bug",
+          desc: "Still busted",
+          severity: "A",
+          status: "regression",
           time_created: tempDate,
           time_updated: tempDate,
         }
@@ -78,7 +111,7 @@ export class App extends Component {
   }
 
   ////
-  
+
   submitNewBug = async (e) => {
     const newData = { ...this.state }
 
@@ -114,7 +147,14 @@ export class App extends Component {
     return (
       <div className="app">
 
-        <header className='nav'>Bug Tracker</header>
+        <header className='nav'>
+          <div>Bug Tracker</div>
+          <div>
+            {/* Multi select boxes to filter items */}
+            <div>Severity: </div>
+            <div>Status: </div>
+          </div>
+        </header>
 
         <main>
 
@@ -169,3 +209,8 @@ export class App extends Component {
 }
 
 export default App
+
+export {
+  severityOptions,
+  statusOptions
+}
