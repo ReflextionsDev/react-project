@@ -1,5 +1,6 @@
 import './App.css'
 import React, { Component } from 'react'
+import Select from 'react-select';
 import Bug from './Bug'
 import BugEditor from './BugEditor'
 import { getDate, printDate } from './middleware/datetime'
@@ -84,6 +85,10 @@ export class App extends Component {
         status: "open",
         time_created: tempDate,
         time_updated: tempDate,
+      },
+      filters: {
+        // Populate with all severity drop down options
+        severity: severityOptions.map(option => option.value)
       }
     }
   }
@@ -143,6 +148,16 @@ export class App extends Component {
   }
 
 
+  // Filters
+
+  filterSeverity = (e) => {
+    // Get value from each selected item and create array with all
+    const filters = e.map(obj => obj.value)
+    const newData = { ...this.state }
+    newData.filters.severity = filters
+    this.setState(newData)
+  }
+
   render() {
     return (
       <div className="app">
@@ -152,6 +167,15 @@ export class App extends Component {
           <div>
             {/* Multi select boxes to filter items */}
             <div>Severity: </div>
+
+            <Select
+              name="filterSeverity"
+              isMulti
+              defaultValue={[...severityOptions]}
+              onChange={this.filterSeverity}
+              options={severityOptions}
+            />
+
             <div>Status: </div>
           </div>
         </header>
